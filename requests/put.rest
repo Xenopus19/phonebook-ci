@@ -1,0 +1,7 @@
+PUT http://localhost:3001/api/persons/6950f8d7a5fd9492eb3f4506
+Content-Type: application/json
+
+{
+  "name": "VS code rest client is pretty handy tool",
+  "number": "123-4567890"
+}
