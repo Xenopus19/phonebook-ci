@@ -31,6 +31,8 @@ jobs:
         run: npm run build
       - name: Test
         run: npm run test
+        env:
+          MONGODB_URL: ${{ secrets.MONGODB_URL }}
       - name: Trigger deployment
         if: ${{ env.NEEDS_DEPLOY == 'true'}}
         run: curl https://api.render.com/deploy/srv-${{secrets.RENDER_SERVICE_ID}}?key=${{secrets.RENDER_SERVICE_KEY}} 
