@@ -36,4 +36,12 @@ export default [
       'no-console': 'off',
     }, 
   },
+  {
+    files: ['tests/**/*.test.js', 'tests/**/*.spec.js'], // шлях до ваших тестів
+    languageOptions: {
+      globals: {
+        ...globals.jest, 
+      },
+    },
+  },
 ]

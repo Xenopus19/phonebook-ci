@@ -1,17 +1,17 @@
-const mongoose = require("mongoose");
+const mongoose = require('mongoose')
 
-const url = process.env.MONGODB_URL;
+const url = process.env.MONGODB_URL
 
-mongoose.set("strictQuery", false);
+mongoose.set('strictQuery', false)
 
 mongoose
   .connect(url, { family: 4 })
   .then(() => {
-    if (process.env.NODE_ENV !== "test") {
-      console.log("connected to MongoDB");
+    if (process.env.NODE_ENV !== 'test') {
+      console.log('connected to MongoDB')
     }
   })
-  .catch((error) => console.log("error connecting to MongoDB:", error.message));
+  .catch((error) => console.log('error connecting to MongoDB:', error.message))
 
 const personSchema = new mongoose.Schema({
   id: String,
@@ -24,21 +24,21 @@ const personSchema = new mongoose.Schema({
     type: String,
     validate: {
       validator: function (v) {
-        return /^\d{2,3}-\d+$/.test(v);
+        return /^\d{2,3}-\d+$/.test(v)
       },
       message: (props) => `${props.value} is not a valid phone number!`,
     },
-    required: [true, "User phone number required"],
+    required: [true, 'User phone number required'],
     minlength: 8,
   },
-});
+})
 
-personSchema.set("toJSON", {
+personSchema.set('toJSON', {
   transform: (document, returnedObject) => {
-    returnedObject.id = returnedObject._id.toString();
-    delete returnedObject._id;
-    delete returnedObject.__v;
+    returnedObject.id = returnedObject._id.toString()
+    delete returnedObject._id
+    delete returnedObject.__v
   },
-});
+})
 
-module.exports = mongoose.model("Person", personSchema);
+module.exports = mongoose.model('Person', personSchema)
