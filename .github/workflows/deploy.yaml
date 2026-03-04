@@ -20,9 +20,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Needs deploy echo
-        run:
-          echo ${{ env.NEEDS_DEPLOY }}
       - uses: actions/setup-node@v4
         with:
           node-version: '25'
